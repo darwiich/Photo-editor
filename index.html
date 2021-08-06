@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" >
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
+    <title>::Welcome to BioGeometry::</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+    <link type="text/css" href="css/service-basic.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+
+
+
+    <script>
+
+        $(document).ready(function(){
+
+            $("#myModal").modal({backdrop: 'static', keyboard: false},'show');
+            // $("#myModal").modal('show');
+
+        });
+    </script>
+
+
+    <link type="text/css" href="dist/tui-color-picker.css" rel="stylesheet">
+    <link type="text/css" href="dist/tui-image-editor.css" rel="stylesheet">
+    <style>
+        @import url(http://fonts.googleapis.com/css?family=Noto+Sans);
+        @import "./css/app.css";
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        @media (max-width:1280px ) {
+        .sidepanel {
+            top: 30%!important;
+        }
+        .LeftSidepanel {
+            top: 15%!important;
+            height: 85%!important;
+
+        }
+        }
+        /* The sidepanel menu */
+        .sidepanel {
+            height: 100%; /* Specify a height */
+            width: 90px; /* 0 width - change this with JavaScript */
+            position: fixed; /* Stay in place */
+            top: 0px;
+            left: 0;
+            background-color: var(--menu-color);
+            overflow-x: hidden; /* Disable horizontal scroll */
+            padding-top: 120px; /* Place content 60px from the top */
+            transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+        }
+
+        /* The sidepanel links */
+        .sidepanel a {
+            display: inline-block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -o-text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+            text-align: center;
+            color: var(--left-side-info-menu-text-color);
+            font-size: 12px;
+            height: 50px;
+        }
+
+        /* When you mouse over the navigation links, change their color */
+        .sidepanel a:hover {
+            color: var(--left-side-info-menu-text-color-hover);
+            font-size: 12px;
+            background-color: var(--menu-background-hover);
+            text-decoration: none;
+        }
+
+        /* The sidepanel menu */
+
+        .LeftSidepanel {
+            height: 100%; /* Specify a height */
+            width: 0; /* 0 width - change this with JavaScript */
+            position: fixed; /* Stay in place */
+            top: 0px;
+            left: 75px;
+            background-color: var( --left-side-info-menu-color);
+            overflow: auto; 
+            padding-top: 60px; /* Place content 60px from the top */
+            transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+  
+
+        }
+
+        /* The Right sidepanel links */
+        .LeftSidepanel a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        /* When you mouse over the navigation links, change their color */
+        .LeftSidepanel a:hover {
+            color: var(--left-side-info-menu-text-color-hover);
+            background-color: var(--menu-background-hover);
+
+        }
+
+        .RightSidepanel {
+            height: 100%; /* Specify a height */
+            width: 0; /* 0 width - change this with JavaScript */
+            position: fixed; /* Stay in place */
+            top: 60px;
+            right: 0px;
+            background-color: var( --left-side-info-menu-color);
+            overflow: auto; 
+            padding-top: 60px; /* Place content 60px from the top */
+            transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+  
+
+        }
+
+        /* The Right sidepanel links */
+        .RightSidepanel a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        /* When you mouse over the navigation links, change their color */
+        .RightSidepanel a:hover {
+            color: var(--left-side-info-menu-text-color-hover);
+            background-color: var(--menu-background-hover);
+
+        }
+
+
+        /* Style the button that is used to open the sidepanel */
+        .openbtn {
+            position: fixed; /* Stay in place */
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #111;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            top: 100px ;
+
+        }
+
+        .openbtn:hover {
+            background-color: #444;
+        }
+
+        .openmenubtn {
+            position: fixed; /* Stay in place */
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #111;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            top: 50px ;
+
+        }
+
+        .openmenubtn:hover {
+            background-color: #444;
+        }
+
+        /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+        .dropdown-container {
+            display: none;
+            background-color: var( --left-side-info-menu-color);
+        }
+        .modal-dialog-margin-top{
+            margin-top: 100px!important;  
+        }
+        
+        
+        .logo {
+    top: 14px;
+    position: relative;
+    border-radius: 8px;
+    margin: 0 auto;
+    width: 109px;
+    vertical-align: middle;
+    float: left;
+}
+
+    </style>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        $(".btn-submit").click(function(e){
+
+            e.preventDefault();
+
+            var PhotoName = $("input[name=PhotoName]").val();
+
+            var PhotoType = $("input[name=PhotoType]").val();
+            if((PhotoName.length==0) || (PhotoName ==""))
+            {alert("Please enter photo name")}
+            else {
+
+
+                if (PhotoType == "png") {
+                    var dataURL = imageEditor.toDataURL("image/png", 1.0);
+                } else {
+                    var dataURL = imageEditor.toDataURL("image/jpg", 1.0);
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('StoreImage') }}",
+                    data: {PhotoName: PhotoName, ImageData: dataURL},
+                    success: function (data) {
+                        $("#result").html(data);
+                    }
+                });
+            }
+        });
+        });
+
+    </script>
+
+</head>
+<body>
+<script type="text/javascript" src="dist/fabric.js"></script>
+<script type="text/javascript" src="dist/tui-code-snippet.min.js"></script>
+<script type="text/javascript" src="dist/tui-color-picker.js"></script>
+<script type="text/javascript" src="dist/FileSaver.min.js"></script>
+<script type="text/javascript" src="dist/tui-image-editor.js"></script>
+<script type="text/javascript" src="js/theme/white-theme.js"></script>
+<script type="text/javascript" src="js/theme/black-theme.js"></script>
+<div class="body-container">
+
+    <div class="tui-image-editor-controls">
+        <div class="header text-center" id="MenuDiv">
+
+           
+            <div style="width: 100%;">
+             <ul class="menu">
+                <img class="logo" src="img/SiteLogo.jpg">
+
+<li style = "padding-top: 10px; margin-left: 2em; width: 100px" class="menu-item fa fa-plus" id="btn-new" aria-hidden="true" title="New" data-toggle="modal" data-target="#OpenFile" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+  </svg>
+  <p>New</p></li>
+  <div class="menu-container">
+                <li class="dropdown" style="margin-left: 100px;">
+                    <button class="dropbtn">Open
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                          </svg>
+                    </button>
+                    <div class="dropdown-content">
+                        <span class="menu-item menu-item-full-width fa fa-upload input-wrapper" title ="from pc">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder2-open" viewBox="0 0 16 16">
+                                <path d="M1 3.5A1.5 1.5 0 0 1 2.5 2h2.764c.958 0 1.76.56 2.311 1.184C7.985 3.648 8.48 4 9 4h4.5A1.5 1.5 0 0 1 15 5.5v.64c.57.265.94.876.856 1.546l-.64 5.124A2.5 2.5 0 0 1 12.733 15H3.266a2.5 2.5 0 0 1-2.481-2.19l-.64-5.124A1.5 1.5 0 0 1 1 6.14V3.5zM2 6h12v-.5a.5.5 0 0 0-.5-.5H9c-.964 0-1.71-.629-2.174-1.154C6.374 3.334 5.82 3 5.264 3H2.5a.5.5 0 0 0-.5.5V6zm-.367 1a.5.5 0 0 0-.496.562l.64 5.124A1.5 1.5 0 0 0 3.266 14h9.468a1.5 1.5 0 0 0 1.489-1.314l.64-5.124A.5.5 0 0 0 14.367 7H1.633z"/>
+                              </svg>                                
+                        <p>PC</p>
+                        <input type="file" accept="image/*" id="input-image-file">
+                     </span>  
+                     <span class="menu-item menu-item-full-width fa fa-plus" id="btn-new" data-toggle="modal" data-target="#OpenFile" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-up" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M7.646 5.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2z"/>
+                            <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"/>
+                          </svg>                           
+                        <p>Cloud</p></span>
+                    </div>
+                </li> 
+                
+                
+                
+                
+                <li class="dropdown">
+                    <button class="dropbtn">Save
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                          </svg>
+                    </button>
+                    <div class="dropdown-content">
+                     <span class="menu-item menu-item-full-width fa fa-floppy-o " id="btn-save" title="Save" data-toggle="modal" data-target="#SaveToServer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">
+                            <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
+                          </svg>                          
+                        <p>Save</p></span>
+                     <span style="text-align: center;" class="menu-item menu-item-full-width fa fa-download " id="btn-download" title ="download">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                          </svg>
+                          
+                          
+                        <p>Download</p>
+                    </span>             
+                    </div>
+                </li> 
+                <li class="dropdown">
+                    <button class="dropbtn">Del
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                          </svg>
+                    </button>
+                    <div class="dropdown-content">
+                        <span class="menu-item menu-item-full-width fa fa-trash-o " id="btn-remove-active-object" onclick="removedrag()" title="Delete">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-x" viewBox="0 0 16 16">
+                                <path d="M6.854 7.146a.5.5 0 1 0-.708.708L7.293 9l-1.147 1.146a.5.5 0 0 0 .708.708L8 9.707l1.146 1.147a.5.5 0 0 0 .708-.708L8.707 9l1.147-1.146a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146z"/>
+                                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                              </svg>
+                              
+                            <p>Del</p></span>           
+                        <span class="menu-item menu-item-full-width fa fa-trash " id="btn-clear-objects" onclick="removedrag()" title="Delete All">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                              </svg>
+                            <p>Del All</p></span>
+                    </div>
+                </li> 
+                
+                <li class="menu-item disabled fa fa-undo " id="btn-undo" title="undo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4z"/>
+                      </svg>
+                      
+                    <p>Undo</p></li>
+                <li class="menu-item disabled fa fa-repeat " id="btn-redo" title="redo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-90deg-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M14.854 4.854a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 4H3.5A2.5 2.5 0 0 0 1 6.5v8a.5.5 0 0 0 1 0v-8A1.5 1.5 0 0 1 3.5 5h9.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4z"/>
+                      </svg>
+                      
+                    <p>Redo</p></li>
+
+                <li class="menu-item fa fa-circle-o-notch " id="btn-rotation" onclick="removedrag()" title="Rotate">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                        <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+                        <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+                      </svg><p>Rotate</p></li>
+                
+                
+                <li class="menu-item fa fa-random " id="btn-flip" onclick="removedrag()" title="Flip">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shuffle" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.624 9.624 0 0 0 7.556 8a9.624 9.624 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.595 10.595 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.624 9.624 0 0 0 6.444 8a9.624 9.624 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5z"/>
+                        <path d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z"/>
+                      </svg><p>Flip</p></li>
+                
+                
+                <li class="menu-item fa fa-upload input-wrapper" title ="upload"  aria-hidden="true" title="Upload"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-arrow-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M7.646 5.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 6.707V10.5a.5.5 0 0 1-1 0V6.707L6.354 7.854a.5.5 0 1 1-.708-.708l2-2z"/>
+                    <path d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383zm.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z"/>
+                  </svg> <p>Upload</p></li>
+                
+                
+                <li class="menu-item fa fa-print " id="btn-Print" onclick="PrintElem();" aria-hidden="true" title="Print"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
+                    <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                    <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z"/>
+                  </svg><p>Print</p></li>
+                <li class="menu-item" id="btn-zoom" onclick = 'zoom();' title="Zoom"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-zoom-in" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                    <path d="M10.344 11.742c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1 6.538 6.538 0 0 1-1.398 1.4z"/>
+                    <path fill-rule="evenodd" d="M6.5 3a.5.5 0 0 1 .5.5V6h2.5a.5.5 0 0 1 0 1H7v2.5a.5.5 0 0 1-1 0V7H3.5a.5.5 0 0 1 0-1H6V3.5a.5.5 0 0 1 .5-.5z"/>
+                  </svg><p>Zoom</p></li>
+                <li class="menu-item fa fa-th " id="btn-show-grid" title="Show grid"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-3x3" viewBox="0 0 16 16">
+                    <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5V5h4V1H1.5zM5 6H1v4h4V6zm1 4h4V6H6v4zm-1 1H1v3.5a.5.5 0 0 0 .5.5H5v-4zm1 0v4h4v-4H6zm5 0v4h3.5a.5.5 0 0 0 .5-.5V11h-4zm0-1h4V6h-4v4zm0-5h4V1.5a.5.5 0 0 0-.5-.5H11v4zm-1 0V1H6v4h4z"/>
+                  </svg><p>Grid</p></li>
+                <li class="menu-item fa fa-hand-rock-o " id="btn-move" onclick="move()" title="Move"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrows-move" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708l2-2zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10zM.146 8.354a.5.5 0 0 1 0-.708l2-2a.5.5 0 1 1 .708.708L1.707 7.5H5.5a.5.5 0 0 1 0 1H1.707l1.147 1.146a.5.5 0 0 1-.708.708l-2-2zM10 8a.5.5 0 0 1 .5-.5h3.793l-1.147-1.146a.5.5 0 0 1 .708-.708l2 2a.5.5 0 0 1 0 .708l-2 2a.5.5 0 0 1-.708-.708L14.293 8.5H10.5A.5.5 0 0 1 10 8z"/>
+                  </svg><p>Move</p></li>
+
+                
+                <li class="menu-item fa fa-text-height " id="btn-text" onclick="removedrag()" title="text"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-textarea-t" viewBox="0 0 16 16">
+                    <path d="M1.5 2.5A1.5 1.5 0 0 1 3 1h10a1.5 1.5 0 0 1 1.5 1.5v3.563a2 2 0 0 1 0 3.874V13.5A1.5 1.5 0 0 1 13 15H3a1.5 1.5 0 0 1-1.5-1.5V9.937a2 2 0 0 1 0-3.874V2.5zm1 3.563a2 2 0 0 1 0 3.874V13.5a.5.5 0 0 0 .5.5h10a.5.5 0 0 0 .5-.5V9.937a2 2 0 0 1 0-3.874V2.5A.5.5 0 0 0 13 2H3a.5.5 0 0 0-.5.5v3.563zM2 7a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm12 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                    <path d="M11.434 4H4.566L4.5 5.994h.386c.21-1.252.612-1.446 2.173-1.495l.343-.011v6.343c0 .537-.116.665-1.049.748V12h3.294v-.421c-.938-.083-1.054-.21-1.054-.748V4.488l.348.01c1.56.05 1.963.244 2.173 1.496h.386L11.434 4z"/>
+                  </svg><p>Text</p></li>
+                
+                
+                <li class="menu-item fa fa-line-chart " id="btn-draw-line" title="DrawLine" onclick="removedrag()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M0 0h1v15h15v1H0V0zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5z"/>
+                  </svg><p>Line</p></li>
+                <li class="menu-item fa fa-star-half-o" id="btn-draw-shape" onclick="removedrag()" title="Shape"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box" viewBox="0 0 16 16">
+                    <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5 8.186 1.113zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                  </svg><p>Shape</p></li>
+                <li id="btn-draw-mode" title="Light Mode" onclick="toogle()">
+                    <label class="switch">
+                        <input type="checkbox"   id="theme-switcher">
+                        <span class="slider round"></span>
+                      </label>
+                </li>
+
+                
+
+               <!-- <li class="menu-item" id="btn-mask-filter">Mask</li>
+                <li class="menu-item" id="btn-add-icon">Icon</li>
+                 <li class="menu-item" id="btn-crop">Crop</li>
+                <li class="menu-item" id="btn-image-filter">Filter</li>
+                -->
+            </div>
+            </ul>
+           </div>
+           <span  class="menuButtonOnFly  fa fa-chevron-right" id="myMenuButtonOnFly" onclick="OpenMenu('left')" title="hide">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+              </svg>
+          </span>     
+
+        </div>
+
+
+        <div class="sub-menu-container" id="zoom-sub-menu">
+            <ul class="zoomsubmenu">
+
+                <li class="menu-item fa fa-search-minus float-unset" title="zoom out" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-zoom-out" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                    <path d="M10.344 11.742c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1 6.538 6.538 0 0 1-1.398 1.4z"/>
+                    <path fill-rule="evenodd" d="M3 6.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/>
+                  </svg><p>Scroll to Zoom out</p></li>
+                <span id="zoomRangePercent" class="zoomRange"></span>
+                <li class="menu-item fa fa-search-plus float-unset" title="zoom in" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-zoom-in" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                    <path d="M10.344 11.742c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1 6.538 6.538 0 0 1-1.398 1.4z"/>
+                    <path fill-rule="evenodd" d="M6.5 3a.5.5 0 0 1 .5.5V6h2.5a.5.5 0 0 1 0 1H7v2.5a.5.5 0 0 1-1 0V7H3.5a.5.5 0 0 1 0-1H6V3.5a.5.5 0 0 1 .5-.5z"/>
+                  </svg><p>Scroll to Zoom in</p></li>
+              
+                <li class="menu-item close closeMenu fa fa-close" onclick="stopZoom()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+                  </svg></li>
+            </ul>
+         </div>
+        <div class="sub-menu-container" id="crop-sub-menu">
+            <ul class="menu">
+                <li class="menu-item" id="btn-apply-crop">Apply</li>
+                <li class="menu-item" id="btn-cancel-crop">Cancel</li>
+            </ul>
+        </div>
+        <div class="sub-menu-container" id="flip-sub-menu">
+            <ul class="zoomsubmenu">
+                <li class="menu-item float-unset" id="btn-flip-x">FlipX</li>
+                <li class="menu-item float-unset" id="btn-flip-y">FlipY</li>
+                <li class="menu-item float-unset" id="btn-reset-flip">Reset</li>
+                <li class="menu-item close closeMenu fa fa-close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+                  </svg></li>
+            </ul>
+        </div>
+        <div class="sub-menu-container" id="rotation-sub-menu">
+            <ul class="zoomsubmenu" style="left: 40%">
+                <li class="menu-item fa fa-undo float-unset" id="btn-rotate-clockwise" title="Clockwise(30)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                    <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                  </svg><p>Clockwise(30)</p></li>
+                <li class="menu-item fa fa-repeat float-unset" id="btn-rotate-counter-clockwise" title="Counter-Clockwise(-30)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                        <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                      </svg><p>Counter-Clockwise(-30)</p></li>
+                <li class="menu-item no-pointer float-unset"><label>Range input<input id="input-rotation-range" type="range" min="-360" value="0" max="360"></label></li>
+                <li class="menu-item close closeMenu fa fa-close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+                  </svg></li>
+            </ul>
+        </div>
+        <div class="sub-menu-container" id="draw-line-sub-menu">
+            <ul class="submenu">
+                <li class="menu-item float-unset">
+                    <label><input type="radio" name="select-line-type" value="freeDrawing" checked="checked"> Free drawing</label>
+                    <label><input type="radio" name="select-line-type" value="lineDrawing"> Straight line</label>
+                </li>
+                <li class="menu-item float-unset" style="width: 340px;" >
+                    <div id="tui-brush-color-picker"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brush" viewBox="0 0 16 16">
+                        <path d="M15.825.12a.5.5 0 0 1 .132.584c-1.53 3.43-4.743 8.17-7.095 10.64a6.067 6.067 0 0 1-2.373 1.534c-.018.227-.06.538-.16.868-.201.659-.667 1.479-1.708 1.74a8.118 8.118 0 0 1-3.078.132 3.659 3.659 0 0 1-.562-.135 1.382 1.382 0 0 1-.466-.247.714.714 0 0 1-.204-.288.622.622 0 0 1 .004-.443c.095-.245.316-.38.461-.452.394-.197.625-.453.867-.826.095-.144.184-.297.287-.472l.117-.198c.151-.255.326-.54.546-.848.528-.739 1.201-.925 1.746-.896.126.007.243.025.348.048.062-.172.142-.38.238-.608.261-.619.658-1.419 1.187-2.069 2.176-2.67 6.18-6.206 9.117-8.104a.5.5 0 0 1 .596.04zM4.705 11.912a1.23 1.23 0 0 0-.419-.1c-.246-.013-.573.05-.879.479-.197.275-.355.532-.5.777l-.105.177c-.106.181-.213.362-.32.528a3.39 3.39 0 0 1-.76.861c.69.112 1.736.111 2.657-.12.559-.139.843-.569.993-1.06a3.122 3.122 0 0 0 .126-.75l-.793-.792zm1.44.026c.12-.04.277-.1.458-.183a5.068 5.068 0 0 0 1.535-1.1c1.9-1.996 4.412-5.57 6.052-8.631-2.59 1.927-5.566 4.66-7.302 6.792-.442.543-.795 1.243-1.042 1.826-.121.288-.214.54-.275.72v.001l.575.575zm-4.973 3.04.007-.005a.031.031 0 0 1-.007.004zm3.582-3.043.002.001h-.002z"/>
+                      </svg>Brush color</div>
+                </li>
+                <li class="menu-item float-unset"><label class="menu-item no-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brush" viewBox="0 0 16 16">
+                    <path d="M15.825.12a.5.5 0 0 1 .132.584c-1.53 3.43-4.743 8.17-7.095 10.64a6.067 6.067 0 0 1-2.373 1.534c-.018.227-.06.538-.16.868-.201.659-.667 1.479-1.708 1.74a8.118 8.118 0 0 1-3.078.132 3.659 3.659 0 0 1-.562-.135 1.382 1.382 0 0 1-.466-.247.714.714 0 0 1-.204-.288.622.622 0 0 1 .004-.443c.095-.245.316-.38.461-.452.394-.197.625-.453.867-.826.095-.144.184-.297.287-.472l.117-.198c.151-.255.326-.54.546-.848.528-.739 1.201-.925 1.746-.896.126.007.243.025.348.048.062-.172.142-.38.238-.608.261-.619.658-1.419 1.187-2.069 2.176-2.67 6.18-6.206 9.117-8.104a.5.5 0 0 1 .596.04zM4.705 11.912a1.23 1.23 0 0 0-.419-.1c-.246-.013-.573.05-.879.479-.197.275-.355.532-.5.777l-.105.177c-.106.181-.213.362-.32.528a3.39 3.39 0 0 1-.76.861c.69.112 1.736.111 2.657-.12.559-.139.843-.569.993-1.06a3.122 3.122 0 0 0 .126-.75l-.793-.792zm1.44.026c.12-.04.277-.1.458-.183a5.068 5.068 0 0 0 1.535-1.1c1.9-1.996 4.412-5.57 6.052-8.631-2.59 1.927-5.566 4.66-7.302 6.792-.442.543-.795 1.243-1.042 1.826-.121.288-.214.54-.275.72v.001l.575.575zm-4.973 3.04.007-.005a.031.031 0 0 1-.007.004zm3.582-3.043.002.001h-.002z"/>
+                  </svg>Brush width<input id="input-brush-width-range" type="range" min="5" max="30" value="12"></label></li>
+                <li class="menu-item close closeMenu fa fa-close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+                  </svg></li>
+            </ul>
+        </div>
+        <div class="sub-menu-container" id="draw-shape-sub-menu">
+            <ul class="submenu">
+                <li class="menu-item float-unset">
+                    <label><input type="radio" name="select-shape-type" value="rect" checked="checked"> rect</label>
+                    <label><input type="radio" name="select-shape-type" value="circle"> circle</label>
+                    <label><input type="radio" name="select-shape-type" value="triangle"> triangle</label>
+                </li>
+                <li class="menu-item float-unset">
+                    <select name="select-color-type">
+                        <option value="fill">Fill</option>
+                        <option value="stroke">Stroke</option>
+                    </select>
+                    <label><input type="radio" name="input-check-fill" id="input-check-transparent" value="transparent">transparent</label>
+                    <label><input type="radio" name="input-check-fill" id="input-check-filter" value="filter">filter</label>
+                    <div id="tui-shape-color-picker"></div>
+                </li>
+                <li class="menu-item float-unset"><label class="menu-item no-pointer">Stroke width<input id="input-stroke-width-range" type="range" min="0" max="300" value="12"></label></li>
+                <li class="menu-item close closeMenu fa fa-close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+                  </svg></li>
+            </ul>
+        </div>
+        <div class="sub-menu-container" id="icon-sub-menu">
+            <ul class="menu">
+                <li class="menu-item">
+                    <div id="tui-icon-color-picker">Icon color</div>
+                </li>
+                <li class="menu-item border" id="btn-register-icon">Register custom icon</li>
+                <li class="menu-item icon-text" data-icon-type="arrow">➡</li>
+                <li class="menu-item icon-text" data-icon-type="cancel">✖</li>
+                <li class="menu-item close closeMenu fa fa-close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+                  </svg></li>
+            </ul>
+        </div>
+        <div class="sub-menu-container" id="text-sub-menu">
+            <ul class="submenu">
+                <li class="menu-item float-unset">
+                    <div>
+                        <button class="btn-text-style fa fa-bold" data-style-type="b" ria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-type-bold" viewBox="0 0 16 16">
+                            <path d="M8.21 13c2.106 0 3.412-1.087 3.412-2.823 0-1.306-.984-2.283-2.324-2.386v-.055a2.176 2.176 0 0 0 1.852-2.14c0-1.51-1.162-2.46-3.014-2.46H3.843V13H8.21zM5.908 4.674h1.696c.963 0 1.517.451 1.517 1.244 0 .834-.629 1.32-1.73 1.32H5.908V4.673zm0 6.788V8.598h1.73c1.217 0 1.88.492 1.88 1.415 0 .943-.643 1.449-1.832 1.449H5.907z"/>
+                          </svg></button>
+                        <button class="btn-text-style fa fa-italic " data-style-type="i" ria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-type-italic" viewBox="0 0 16 16">
+                            <path d="M7.991 11.674 9.53 4.455c.123-.595.246-.71 1.347-.807l.11-.52H7.211l-.11.52c1.06.096 1.128.212 1.005.807L6.57 11.674c-.123.595-.246.71-1.346.806l-.11.52h3.774l.11-.52c-1.06-.095-1.129-.211-1.006-.806z"/>
+                          </svg></button>
+                        <button class="btn-text-style fa fa-underline " data-style-type="u" ria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-type-underline" viewBox="0 0 16 16">
+                            <path d="M5.313 3.136h-1.23V9.54c0 2.105 1.47 3.623 3.917 3.623s3.917-1.518 3.917-3.623V3.136h-1.23v6.323c0 1.49-.978 2.57-2.687 2.57-1.709 0-2.687-1.08-2.687-2.57V3.136zM12.5 15h-9v-1h9v1z"/>
+                          </svg></button>
+                    </div>
+                    <div>
+                        <button class="btn-text-style fa fa-align-left" data-style-type="l"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-text-left" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                          </svg></button>
+                        <button class="btn-text-style fa fa-align-center"  data-style-type="c"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-text-center" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M4 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                          </svg></button>
+                        <button class="btn-text-style fa fa-align-right" data-style-type="r"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-text-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm4-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+                          </svg></button>
+                    </div>
+                </li>
+                <li class="menu-item float-unset"><label class="no-pointer"><input id="input-font-size-range" type="range" min="10" max="100" value="10"></label></li>
+                <li class="menu-item float-unset">
+                    <div id="tui-text-color-picker">Text color</div>
+                </li>
+                <li class="menu-item close closeMenu fa fa-close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+                  </svg></li>
+            </ul>
+        </div>
+        <div class="sub-menu-container" id="filter-sub-menu">
+            <ul class="menu">
+                <li class="menu-item border input-wrapper">
+                    Load Mask Image
+                    <input type="file" accept="image/*" id="input-mask-image-file">
+                </li>
+                <li class="menu-item" id="btn-apply-mask">Apply mask filter</li>
+                <li class="menu-item close closeMenu fa fa-close"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
+                  </svg></li>
+            </ul>
+        </div>
+        <div class="sub-menu-container" id="image-filter-sub-menu">
+            <ul class="menu">
+                <li class="menu-item align-left-top">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td><label><input type="checkbox" id="input-check-grayscale">Grayscale</label></td>
+                            <td><label><input type="checkbox" id="input-check-invert">Invert</label></td>
+                            <td><label><input type="checkbox" id="input-check-sepia">Sepia</label></td>
+                        </tr>
+                        <tr>
+                            <td><label><input type="checkbox" id="input-check-sepia2">Sepia2</label></td>
+                            <td><label><input type="checkbox" id="input-check-blur">Blur</label></td>
+                            <td><label><input type="checkbox" id="input-check-sharpen">Sharpen</label></td>
+                        </tr>
+                        <tr>
+                            <td><label><input type="checkbox" id="input-check-emboss">Emboss</label></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li class="menu-item align-left-top">
+                    <p>
+                        <label><input type="checkbox" id="input-check-remove-white">RemoveWhite</label><br>
+                        <label>Threshold<input class="range-narrow" id="input-range-remove-white-threshold" type="range" min="0" value="60" max="255"></label><br>
+                        <label>Distance<input class="range-narrow" id="input-range-remove-white-distance" type="range" min="0" value="10" max="255"></label>
+                    </p>
+                </li>
+                <li class="menu-item align-left-top">
+                    <p>
+                        <label><input type="checkbox" id="input-check-brightness">Brightness</label><br>
+                        <label>Value<input class="range-narrow" id="input-range-brightness-value" type="range" min="-255" value="100" max="255"></label>
+                    </p>
+                </li>
+                <li class="menu-item align-left-top">
+                    <p>
+                        <label><input type="checkbox" id="input-check-noise">Noise</label><br>
+                        <label>Value<input class="range-narrow" id="input-range-noise-value" type="range" min="0" value="100" max="1000"></label>
+                    </p>
+                </li>
+                <li class="menu-item align-left-top">
+                    <p>
+                        <label><input type="checkbox" id="input-check-color-filter">ColorFilter</label><br>
+                        <label>Threshold<input class="range-narrow" id="input-range-color-filter-value"
+                                               type="range" min="0" value="45" max="255"></label>
+                    </p>
+                </li>
+                <li class="menu-item align-left-top">
+                    <p>
+                        <label><input type="checkbox" id="input-check-pixelate">Pixelate</label><br>
+                        <label>Value
+                            <input class="range-narrow" id="input-range-pixelate-value" type="range" min="2" value="4" max="20">
+                        </label>
+                    </p>
+                </li>
+                <li class="menu-item align-left-top">
+                    <p>
+                        <label>
+                            <input type="checkbox" id="input-check-tint">Tint</label><br>
+                    <div id="tui-tint-color-picker"></div>
+                    <label>Opacity
+                        <input class="range-narrow" id="input-range-tint-opacity-value" type="range" min="0" value="1" max="1" step="0.1">
+                    </label>
+                </p>
+                </li>
+
+                <li class="menu-item align-left-top">
+                    <p>
+                        <label><input type="checkbox" id="input-check-multiply">Multiply</label>
+                    <div id="tui-multiply-color-picker"></div>
+                    </p>
+                </li>
+                <li class="menu-item align-left-top">
+                    <p>
+                        <label><input type="checkbox" id="input-check-blend">Blend</label>
+                    <div id="tui-blend-color-picker"></div>
+                    <select name="select-blend-type">
+                        <option value="add" selected>Add</option>
+                        <option value="diff">Diff</option>
+                        <option value="diff">Subtract</option>
+                        <option value="multiply">Multiply</option>
+                        <option value="screen">Screen</option>
+                        <option value="lighten">Lighten</option>
+                        <option value="darken">Darken</option>
+                    </select>
+                    </p>
+                </li>
+                <li class="menu-item close closeMenu fa fa-close"></li>
+            </ul>
+        </div>
+     </div>
+    <div class="tui-image-editor" id="tui-image-editor"></div>
+
+
+<!-------image-editor-container--------->
+
+    <script type="text/javascript" src="dist/tui-image-editor.js"></script>
+    <script src="js/service-basic.js"></script>
+
+
+
+<div>
+
+    <!-------End image-editor-container--------->
+</div>
+<!------------Left Side Bar------>
+<div>
+
+
+
+
+<script>
+    /* Set the width of the sidebar to 250px (show it) */
+    function Open(type)
+    {
+        if(   document.getElementById("mycontent").style.display = "none" ){
+            document.getElementById("mycontent").style.display = "block" ;
+
+        }else{
+            document.getElementById("mycontent").style.display = "block" ;
+
+        }
+    }
+    function OpenMenu(type,Category)
+    {
+        if(type ==='left'){
+            if(document.getElementById("myLeftSidepanel").style.width =="250px")
+        {
+            document.getElementById("myLeftSidepanel").style.width = "0" ;
+            document.getElementById("myMenuButtonOnFly").style.left = "70px";
+            child = document.getElementsByClassName('bi-chevron-left')[0]; 
+            document.getElementById("myMenuButtonOnFly").removeChild(child);
+            document.getElementById("myMenuButtonOnFly").innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+</svg>`;
+        }
+        else {
+            document.getElementById("myLeftSidepanel").style.width = "250px";
+            document.getElementById("myMenuButtonOnFly").style.left = "305px";
+            let child = document.getElementsByClassName('bi-chevron-right')[0];
+            document.getElementById("myMenuButtonOnFly").removeChild(child);
+            document.getElementById("myMenuButtonOnFly").innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+</svg>`;
+        }
+        }else{
+         if(document.getElementById("myRightSidepanel").style.width =="150px")
+        {
+            document.getElementById("myRightSidepanel").style.width = "0" ;
+            document.getElementById("myMenuButtonOnFly2").style.right = "0px";
+            let child = document.getElementsByClassName('bi-chevron-left')[0];
+            document.getElementById("myMenuButtonOnFly2").removeChild(child);
+            document.getElementById("myMenuButtonOnFly2").innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+</svg>`;
+        }
+        else {
+            document.getElementById("myRightSidepanel").style.width = "150px";
+            document.getElementById("myMenuButtonOnFly2").style.right = "132px";
+            let child = document.getElementsByClassName('bi-chevron-right')[0];
+            document.getElementById("myMenuButtonOnFly2").classList.removeChild(child);;
+            document.getElementById("myMenuButtonOnFly2").innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+</svg>`;
+        }
+        }
+
+//if(Category ==="Numbers")
+//{
+
+/*
+document.getElementById("Bio").style.display = "none";
+document.getElementById("Numbers").style.display = "none";
+document.getElementById("Shapes").style.display = "none";
+document.getElementById("Text").style.display = "none";
+document.getElementById("Colors").style.display = "none";
+document.getElementById("Divine").style.display = "none";
+*/
+
+     var dropdown = document.getElementById(Category);
+     dropdown.style.display = "block";
+ }
+
+
+</script>
+<!---------End Side Bar-------->
+
+
+    <div  id="myLeftSidepanel" class="LeftSidepanel">
+        <!-- <a href="javascript:void(0)" class="closebtn" onclick="CloseMenu();">&times;</a> -->
+        
+        
+        <div class="dropdown-container" id="Bio">
+            <a href="#"><img src="img/bg/bio/bio1.jpg"  class="rounded-circle z-depth-2 img-thumbnail" onclick="AddImage(this.src);"></a>
+            <a href="#"><img src="img/bg/bio/bio2.jpg"  class="rounded-circle z-depth-2 img-thumbnail" onclick="AddImage(this.src);"></a>
+            
+        </div>
+        
+        
+        <div class="dropdown-container" id="Shapes">
+            <a href="#"><img src="img/bg/shapes/shape1.jpg"  class="rounded-circle z-depth-2 img-thumbnail" onclick="AddImage(this.src);"></a>
+            <a href="#"><img src="img/bg/shapes/shape2.jpg"  class="rounded-circle z-depth-2 img-thumbnail" onclick="AddImage(this.src);"></a>
+            
+            
+             <a href="#"><img src="img/bg/shapes/shape3.jpg"  class="rounded-circle z-depth-2 img-thumbnail" onclick="AddImage(this.src);"></a>
+        </div>
+        
+        <div class="dropdown-container" id="Numbers">
+            <a href="#"><img src="img/bg/numbers/1.png"  class="rounded-circle z-depth-2 img-thumbnail" onclick="AddImage(this.src);"></a>
+            <a href="#"><img style  src="img/bg/numbers/2.png"  class="rounded-circle z-depth-2 img-thumbnail" onclick="AddImage(this.src);"></a>
+            <a href="#"><img src="img/bg/numbers/3.jpg"  class="rounded-circle z-depth-2 img-thumbnail" onclick="AddImage(this.src);"></a>
+            <a href="#"><img src="img/bg/numbers/4.jpg"  class="rounded-circle z-depth-2 img-thumbnail" onclick="AddImage(this.src);"></a>
+        </div>
+        
+    
+        
+        
+
+    </div>
+    <div  id="myRightSidepanel" >
+   
+        <nav class="bubble-menu">
+            <input class="menu__toggle" type="checkbox" id="menu-toggle"/>
+            <label class="menu__toggle-label" for="menu-toggle"></label>
+         
+            <label class="menu__toggle-label menu__toggle-label--closer "   onclick="Open('open')" for="menu-toggle">
+              <svg class="menu__icon" preserveAspectRatio="xMinYMin" viewBox="0 0 24 24">
+                <path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"></path>
+              </svg>
+               <svg class="menu__icon" preserveAspectRatio="xMinYMin" viewBox="0 0 24 24">
+                <path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"></path>
+              </svg> 
+            </label> 
+            <ul class="menu__content" id="mycontent">
+              <li class="menu__item" style="--x: 0; --y: 12;">
+                
+                <a href="#" data-toggle="modal" data-target="#myAbout" 
+                class=" menu__link" title="About US"> 
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-lg" viewBox="0 0 16 16">
+                    <path d="m10.277 5.433-4.031.505-.145.67.794.145c.516.123.619.309.505.824L6.101 13.68c-.34 1.578.186 2.32 1.423 2.32.959 0 2.072-.443 2.577-1.052l.155-.732c-.35.31-.866.434-1.206.434-.485 0-.66-.34-.536-.939l1.763-8.278zm.122-3.673a1.76 1.76 0 1 1-3.52 0 1.76 1.76 0 0 1 3.52 0z"/>
+                  </svg>
+                </a>
+              </li>
+              <li class="menu__item" style="--x: 0; --y: 24;">
+                <a href="#" class=" menu__link" data-toggle="modal" data-target="#howitworks" title="Help">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-question-lg" viewBox="0 0 16 16">
+                        <path d="M3 4.075a.423.423 0 0 0 .43.44H4.9c.247 0 .442-.2.475-.445.159-1.17.962-2.022 2.393-2.022 1.222 0 2.342.611 2.342 2.082 0 1.132-.668 1.652-1.72 2.444-1.2.872-2.15 1.89-2.082 3.542l.005.386c.003.244.202.44.446.44h1.445c.247 0 .446-.2.446-.446v-.188c0-1.278.487-1.652 1.8-2.647 1.086-.826 2.217-1.743 2.217-3.667C12.667 1.301 10.393 0 7.903 0 5.645 0 3.17 1.053 3.001 4.075zm2.776 10.273c0 .95.758 1.652 1.8 1.652 1.085 0 1.832-.702 1.832-1.652 0-.985-.747-1.675-1.833-1.675-1.04 0-1.799.69-1.799 1.675z"/>
+                      </svg>
+                </a>
+            </li>
+              <li class="menu__item" style="--x: 0; --y: 36;">
+                <a href="#" data-toggle="modal" data-target="#News" class="menu__link  fa fa-newspaper-o" title="News">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bitwo bi-newspaper" viewBox="0 0 16 16">
+                        <path d="M0 2.5A1.5 1.5 0 0 1 1.5 1h11A1.5 1.5 0 0 1 14 2.5v10.528c0 .3-.05.654-.238.972h.738a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 1 1 0v9a1.5 1.5 0 0 1-1.5 1.5H1.497A1.497 1.497 0 0 1 0 13.5v-11zM12 14c.37 0 .654-.211.853-.441.092-.106.147-.279.147-.531V2.5a.5.5 0 0 0-.5-.5h-11a.5.5 0 0 0-.5.5v11c0 .278.223.5.497.5H12z"/>
+                        <path d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z"/>
+                      </svg>
+                    </a>
+            </li>
+              <li class="menu__item" style="--x: 0; --y: 48;">
+                <a href="#"  data-toggle="modal" data-target="#ContactUs" class=" menu__link  fa fa-envelope-o" title="Contact Us">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bitwo bi-envelope" viewBox="0 0 16 16">
+                        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+                      </svg>
+                    </a>
+                </li>
+                <li class="menu__item" style="--x: 0; --y: 60;">
+                    <a href="{{url('/')}}"  class="menu__link fa fa-user-circle" title="My Account">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bitwo bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                          </svg>
+                        </a>
+                </li>
+                <li class="menu__item" style="--x: 0; --y: 72;">
+                    <a href="{{url('/logout')}}" class=" menu__link  fa fa-sign-out" title="Logout">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi  bitwo bi-door-open" viewBox="0 0 16 16">
+                            <path d="M8.5 10c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
+                            <path d="M10.828.122A.5.5 0 0 1 11 .5V1h.5A1.5 1.5 0 0 1 13 2.5V15h1.5a.5.5 0 0 1 0 1h-13a.5.5 0 0 1 0-1H3V1.5a.5.5 0 0 1 .43-.495l7-1a.5.5 0 0 1 .398.117zM11.5 2H11v13h1V2.5a.5.5 0 0 0-.5-.5zM4 1.934V15h6V1.077l-6 .857z"/>
+                          </svg>
+                    </a>
+                </li>
+ 
+            
+            </ul>
+          </nav>
+ 
+
+    </div>
+    <div id="mySidepanel" class="sidepanel" >
+        
+        <a href="#"  onclick="OpenMenu('left','Bio')" class="fa fa-bolt"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bootstrap" viewBox="0 0 16 16">
+            <path d="M5.062 12h3.475c1.804 0 2.888-.908 2.888-2.396 0-1.102-.761-1.916-1.904-2.034v-.1c.832-.14 1.482-.93 1.482-1.816 0-1.3-.955-2.11-2.542-2.11H5.062V12zm1.313-4.875V4.658h1.78c.973 0 1.542.457 1.542 1.237 0 .802-.604 1.23-1.764 1.23H6.375zm0 3.762V8.162h1.822c1.236 0 1.887.463 1.887 1.348 0 .896-.627 1.377-1.811 1.377H6.375z"/>
+            <path d="M0 4a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V4zm4-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V4a3 3 0 0 0-3-3H4z"/>
+          </svg><p>Biosegnatures</p></a>
+        <a href="#"  onclick="OpenMenu('left','Power')" class="fa fa-bolt" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightning" viewBox="0 0 16 16">
+                <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5zM6.374 1 4.168 8.5H7.5a.5.5 0 0 1 .478.647L6.78 13.04 11.478 7H8a.5.5 0 0 1-.474-.658L9.306 1H6.374z"/>
+              </svg>
+            <p>Power Spot</p></a>
+        <a href="#"  onclick="OpenMenu('left','Cards')"  class="fa fa-cards">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
+                <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                <path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z"/>
+              </svg>
+            <p>Cards</p></a>
+            
+            <a href="#"  onclick="OpenMenu('left','Text')"  class="fa fa-text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fonts" viewBox="0 0 16 16">
+                    <path d="M12.258 3h-8.51l-.083 2.46h.479c.26-1.544.758-1.783 2.693-1.845l.424-.013v7.827c0 .663-.144.82-1.3.923v.52h4.082v-.52c-1.162-.103-1.306-.26-1.306-.923V3.602l.431.013c1.934.062 2.434.301 2.693 1.846h.479L12.258 3z"/>
+                  </svg>
+            <p>Text</p></a>
+            
+             <a href="#"  onclick="OpenMenu('left','Numbers')"  class="fa fa-text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bar-chart-line" viewBox="0 0 16 16">
+                    <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z"/>
+                  </svg>
+            <p>Numbers</p></a>
+            
+             <a href="#"  onclick="OpenMenu('left','Shapes')"  class="fa fa-text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gem" viewBox="0 0 16 16">
+                    <path d="M3.1.7a.5.5 0 0 1 .4-.2h9a.5.5 0 0 1 .4.2l2.976 3.974c.149.185.156.45.01.644L8.4 15.3a.5.5 0 0 1-.8 0L.1 5.3a.5.5 0 0 1 0-.6l3-4zm11.386 3.785-1.806-2.41-.776 2.413 2.582-.003zm-3.633.004.961-2.989H4.186l.963 2.995 5.704-.006zM5.47 5.495 8 13.366l2.532-7.876-5.062.005zm-1.371-.999-.78-2.422-1.818 2.425 2.598-.003zM1.499 5.5l5.113 6.817-2.192-6.82L1.5 5.5zm7.889 6.817 5.123-6.83-2.928.002-2.195 6.828z"/>
+                  </svg>
+            <p>Shapes</p></a>
+            
+             <a href="#"  onclick="OpenMenu('left','Colors')"  class="fa fa-text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-palette" viewBox="0 0 16 16">
+                    <path d="M8 5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm4 3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM5.5 7a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                    <path d="M16 8c0 3.15-1.866 2.585-3.567 2.07C11.42 9.763 10.465 9.473 10 10c-.603.683-.475 1.819-.351 2.92C9.826 14.495 9.996 16 8 16a8 8 0 1 1 8-8zm-8 7c.611 0 .654-.171.655-.176.078-.146.124-.464.07-1.119-.014-.168-.037-.37-.061-.591-.052-.464-.112-1.005-.118-1.462-.01-.707.083-1.61.704-2.314.369-.417.845-.578 1.272-.618.404-.038.812.026 1.16.104.343.077.702.186 1.025.284l.028.008c.346.105.658.199.953.266.653.148.904.083.991.024C14.717 9.38 15 9.161 15 8a7 7 0 1 0-7 7z"/>
+                  </svg>
+            <p>Colors</p></a>
+            
+            
+             <a href="#"  onclick="OpenMenu('left','Divine')"  class="fa fa-text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16">
+                    <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.734 1.734 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z"/>
+                  </svg>
+            <p>Divine Names</p></a>
+       
+    </div>
+
+
+  
+
+
+</div>
+
+
+<div id="myModal" class="modal fade">
+
+    @if (Auth::check())
+
+        <div class="modal-dialog modal-dialog-margin-top">
+            <div class="modal-content">
+
+                <div class="text-center">
+
+
+                    <img src="img/user.jpg" class="rounded-circle z-depth-2 img-thumbnail">
+
+                    <h2 class="my-5 h2">Welcome {{ Auth::user()->name }}
+
+                    </h2>
+                    <div class="modal-body">
+                        Your subscription is about to expire.
+
+
+                    </div>
+
+                </div>
+
+                <div class="float-container">
+                    <button name="Open" class="btn btn-outline-primary btn-lg active btn-block" data-toggle="modal" data-target="#OpenFile">Open</button>
+                    <button name="Load"  class="btn btn-outline-warning btn-lg active btn-block">Load</button>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    @else
+        <div class="modal-dialog modal-dialog-margin-top" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModal">{{ __('Login') }}</h5>
+
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="remember">
+                                        {{ __('Remember Me') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Login') }}
+                                </button>
+
+
+
+                            </div>
+                            @if (Route::has('password.request'))
+                                <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    {{ __('Forgot Your Password?') }}
+                                </a>
+                            @endif
+
+                            @if (Route::has('register'))
+
+                                <a class="btn btn-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+
+
+                            @endif
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    @endif
+
+</div>
+
+<!----------------Select Sample ------------>
+<div id="OpenFile" class="modal fade">
+    <div class="modal-dialog modal-dialog-margin-top">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Select Background Photo </h5>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="img/bg/Sample1.jpeg" class="img-thumbnail float-left" onclick="SelectImage(this.src);">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="img/bg/Sample2.jpeg" class="img-thumbnail  float-center" onclick="SelectImage(this.src);">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="thumbnail">
+                            <img src="img/bg/Sample3.jpeg" class="img-thumbnail float-left" onclick="SelectImage(this.src);">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+</div>
+<!----------------theme switcher ------------>
+
+<script type="text/javascript">
+    // Wait for document to load
+    document.addEventListener("DOMContentLoaded", function(event) {
+      document.documentElement.setAttribute("data-theme", "dark");
+      let mode = document.getElementById("btn-draw-mode");
+  
+      // Get our button switcher
+      var themeSwitcher = document.getElementById("theme-switcher");
+  
+      // When our button gets clicked
+      themeSwitcher.onclick = function() {
+        // Get the current selected theme, on the first run
+        // it should be `dark`
+        var currentTheme = document.documentElement.getAttribute("data-theme");
+  
+        // Switch between `light` and `dark`
+        var switchToTheme = currentTheme === "light" ? "dark" : "light"
+        mode.title = currentTheme === "light" ? 'Light Mode'  : 'Dark Mode'
+        // Set our currenet theme to the new one
+        document.documentElement.setAttribute("data-theme", switchToTheme);
+      }
+    });
+  </script>
+
+<script >
+    function SelectImage(src)
+    {
+       
+
+        imageEditor.loadImageFromURL(src, 'BioGeometry').then(result => {
+            console.log('old : ' + result.oldWidth + ', ' + result.oldHeight);
+            console.log('new : ' + result.newWidth + ', ' + result.newHeight);
+        });
+
+
+ 
+       
+
+        $("#myModal").modal('hide');
+        $("#OpenFile").modal('hide');
+
+    }
+
+    function AddImage(src)
+    {
+
+        //  alert(src) ;
+
+        imageEditor.addImageObject(src).then(objectProps => {console.log(ojectProps.id);});
+    }
+    
+
+</script>
+
+
+<!-- Modal -->
+<div id="howitworks" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-margin-top">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">How It works</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <p>Instructions .</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="myAbout" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-margin-top">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">About BioGeometry</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <div class="modal-body">
+
+                News
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="News" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-margin-top">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">News</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <p>News goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="ContactUs" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-margin-top">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Contact us</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <p>Feel Free to Drop Us A Line To Contact Us.</p>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 ">
+                <form action="" class="contact-form">
+                    <p><input type="text" name="name" placeholder="Name" class="form-control"></p>
+                    <p><input type="text" name="email" placeholder="Email" class="form-control"></p>
+                    <p><input type="text" name="subject" placeholder="Subject" class="form-control"></p>
+                    <p><textarea name="message" placeholder="Message" class="form-control"></textarea></p>
+                    <p><button type="submit">Submit Now</button></p>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="SaveToServer" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-margin-top">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Save Image</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <h4 class="modal-title" style="margin-left: 12px;">Image Name</h4>
+            <div class="modal-body form-group">
+                <form>
+                    <div class="form-group">
+
+                        <input type="text" name="PhotoName" class="form-control" placeholder="Name" required="">
+                    </div>
+
+                    <div class="form-group">
+                        <h4 class="modal-title">Image Type</h4>
+
+                        <input type="radio" id="png" name="PhotoType" value="png">
+                        <label for="png">PNG</label><br>
+                        <input type="radio" id="jpg" name="PhotoType" value="jpg">
+                        <label for="jpg">JPG</label><br>
+                    </div>
+
+
+                    <div class="form-group">
+                        <button class="btn btn-success btn-submit">Save</button>
+                    </div>
+
+                    <div id="result"><h2></h2></div>
+                </form>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div id="Register" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-margin-top">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">News</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <div class="modal-body">
+                <p>News goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Modal -->
+<script>
+    function move() {
+        var draggable = $('#tui-image-editor');
+
+
+
+        draggable.on('mousedown', function (e)
+        {
+          // alert($(this).name) ;
+            var dr = $(this).addClass("drag").css("cursor", "pointer");
+            height = dr.outerHeight();
+            width = dr.outerWidth();
+            ypos = dr.offset().top + height - e.pageY;
+            xpos = dr.offset().left + width - e.pageX;
+            $(document.body).on('mousemove', function (e) {
+                var itop = e.pageY + ypos - height;
+                var ileft = e.pageX + xpos - width;
+                if (dr.hasClass("drag")) {
+                    dr.offset({top: itop, left: ileft});
+                }
+            }).on('mouseup', function (e) {
+                dr.removeClass("drag");
+            });
+        });
+    }
+
+  function removedrag()
+  {
+      var draggable = $('#tui-image-editor');
+
+
+      draggable.on('mousedown', function (e)
+      {
+          // alert($(this).name) ;
+          var dr = $(this).removeClass("drag");
+
+
+          });
+
+
+
+
+
+
+  }
+</script>
+
+<script >
+    function PrintElem(elem)
+    {
+        //var canvas = document.getElementById('tui-image-editor-container');
+        //  var canvas = new tui.ImageEditor(document.querySelector('#tui-image-editor')) ;
+        var dataURL = imageEditor.toDataURL("image/jpeg", 1.0);
+//        console.log(dataURL);
+
+        var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+        var oImg = mywindow.document.createElement("img");
+        //oImg.src = dataURL ;
+        mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+        mywindow.document.write('</head>');
+        mywindow.document.write( '<body   ') ;
+        mywindow.document.write(' id= "body">') ;
+
+        mywindow.document.write('<h1>' + document.title  + '</h1>');
+        // document.getElementById(elem).style.display = 'block';
+        // mywindow.document.write(document.getElementById(elem).innerHTML);
+        //mywindow.document.write(oImg) ;
+        oImg.src = dataURL ;
+        mywindow.document.write('<img src ='+ dataURL + '>') ;
+        //document.getElementById('body').appendChild(oImg);
+        mywindow.document.write('<button onclick="window.print()">Print</button>') ;
+        mywindow.document.write('</body></html>');
+
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10*/
+
+
+        //mywindow.print();
+        //mywindow.close();
+
+
+
+        return true;
+
+
+
+    }
+
+
+</script>
+    <script language="JavaScript">
+
+        const warning = 'This json is not correctly formatted';
+        const text = {status: "failed", message: "this is not correct json format"};
+
+        $.ajaxSetup({
+            headers: {
+
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+
+            }
+        });
+
+        function DoSave()
+        {
+            var dataURL = imageEditor.toDataURL("image/jpeg", 1.0);
+
+            //alert(dataURL) ;
+
+//                        $.post("{{ route('StoreImage') }}", {'imgBase64': dataURL})
+            $.ajax({
+                type: "POST",
+                url:  "{{ route('StoreImage') }}",
+                data: 'imgBase64=' + dataURL,
+                success: function(data){
+                    var emp_data = JSON.parse(data);
+                    alert(emp_data);
+                }
+            });
+
+
+
+        }
+
+    </script>
+
+
+
+</div>
+<script>
+    // Add active class to the current button (highlight it)
+    var header = document.getElementById("MenuDiv");
+    var btns = header.getElementsByClassName("menu-item");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            if (current.length > 0) {
+                current[0].className = current[0].className.replace(" active", "");
+            }
+            this.className += " active";
+        });
+    }
+</script>
+
+<script>
+    // Add active class to the current button (highlight it)
+    var header = document.getElementById("mySidepanel");
+    var btns = header.getElementsByClassName("fa");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            var current = document.getElementsByClassName("active");
+            if (current.length > 0) {
+                current[0].className = current[0].className.replace(" active", "");
+            }
+            this.className += " active";
+        });
+    }
+</script>
+
+<script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+</script>
+</body>
+</html>
